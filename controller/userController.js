@@ -13,7 +13,8 @@ const membershipStatus = {
 // Display User sign up form on GET
 user_create_get = (req, res, next) => {
     res.render("signup_form", {
-        title: "Sign Up"
+        title: "Sign Up",
+        user : res.locals.currentUser
     })
 }
 

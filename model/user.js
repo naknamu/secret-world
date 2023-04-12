@@ -16,7 +16,7 @@ const UserSchema = new Schema({
         required: true,
     },
     status: {
-        type: Schema.Types.ObjectId,
+        type: String,
         ref: "Status",
         required: true
     }
