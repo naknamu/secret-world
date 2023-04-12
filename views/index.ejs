@@ -9,7 +9,9 @@
 
     <div class="signup section">
         <div class="container">
-
+          <% if (user) { %>
+            <h1>Hello <%= user.name %>!</h1>
+          <% } %>
         </div>
     </div>
 
