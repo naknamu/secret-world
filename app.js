@@ -75,6 +75,15 @@ passport.deserializeUser(async function(id, done) {
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+app.get("/log-out", (req, res, next) => {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

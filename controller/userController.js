@@ -14,7 +14,8 @@ const membershipStatus = {
 user_create_get = (req, res, next) => {
     res.render("signup_form", {
         title: "Sign Up",
-        user : res.locals.currentUser
+        user : res.locals.currentUser,
+        errors: undefined,
     })
 }
 
@@ -22,7 +23,7 @@ user_create_get = (req, res, next) => {
 user_create_post = [ 
     // Validate and sanitize form fields
     body("name", "Name must not be empty").trim().isLength({ min: 1}).escape(),
-    body("username", "Username must not be empty").trim().isLength({ min: 1}).escape(),
+    body("username", "Username is required").trim().isLength({ min: 1}).escape(),
     body("password", "Password must not be empty").trim().isLength({ min: 1}).escape(),
     body("confirm_password", "Please confirm your password").trim().isLength({ min: 1}).escape()
      .custom((value, { req }) => {
@@ -54,9 +55,11 @@ user_create_post = [
                 if (!errors.isEmpty()) {
                     res.render("signup_form", {
                         title: "Sign Up",
-                        errors: errors.array(),
+                        errors: errors.mapped(),
                         user
                     })
+                    // Important to return to prevent Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client!!!
+                    return;
                 }
                 // Successful
                 const result = await user.save();

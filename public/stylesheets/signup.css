@@ -22,3 +22,8 @@
 .input-field::placeholder {
     color: var(--manatee);
 }
+
+.error {
+    color: var(--cinnamon-satin);
+    transform: translateY(-18px);
+}

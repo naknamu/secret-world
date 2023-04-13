@@ -5,7 +5,8 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('index', { 
     title: 'Secret World',
-    user: res.locals.currentUser
+    user: res.locals.currentUser,
+    errors: undefined,
   });
 });
 
