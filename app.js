@@ -7,10 +7,12 @@ const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
+const User = require("./model/user");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const User = require("./model/user");
+var passcodeRouter = require('./routes/passcode');
+
 
 require('dotenv').config()
 
@@ -74,15 +76,7 @@ passport.deserializeUser(async function(id, done) {
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
-app.get("/log-out", (req, res, next) => {
-  req.logout(function (err) {
-    if (err) {
-      return next(err);
-    }
-    res.redirect("/");
-  });
-});
+app.use('/passcode', passcodeRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

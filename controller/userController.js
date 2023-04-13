@@ -2,13 +2,6 @@ const User = require("../model/user");
 
 const { body, validationResult } = require('express-validator');
 const bcrypt = require("bcryptjs");
-const passport = require("passport");
-
-const membershipStatus = {
-    one: "ADMIN",
-    two: "MEMBER",
-    three: "NOT A MEMBER"
-}
 
 // Display User sign up form on GET
 user_create_get = (req, res, next) => {
@@ -49,7 +42,7 @@ user_create_post = [
                     name: req.body.name,
                     username: req.body.username,
                     password: hashedPassword,
-                    status: membershipStatus.three,
+                    status: process.env.MEMBER_THREE,
                 })
                 // Return to sign up form if errors in validation
                 if (!errors.isEmpty()) {
@@ -64,6 +57,7 @@ user_create_post = [
                     // Successful
                     const result = await user.save();
 
+                    // Automatically LOG IN user upon sign up
                     req.login(user, function(err) {
                         if (err) { return next(err); }
                         return res.redirect('/');
@@ -74,6 +68,16 @@ user_create_post = [
                 return next(err);
             }
         })
-}]
+}];
 
-module.exports = { user_create_get, user_create_post};
+// LOG OUT user on GET request
+user_logout_get = (req, res, next) => {
+    req.logout(function (err) {
+      if (err) {
+        return next(err);
+      }
+      res.redirect("/");
+    });
+};
+
+module.exports = { user_create_get, user_create_post, user_logout_get};
