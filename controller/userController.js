@@ -60,14 +60,16 @@ user_create_post = [
                     })
                     // Important to return to prevent Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client!!!
                     return;
-                }
-                // Successful
-                const result = await user.save();
+                } else {
+                    // Successful
+                    const result = await user.save();
 
-                req.login(user, function(err) {
-                    if (err) { return next(err); }
-                    return res.redirect('/');
-                });
+                    req.login(user, function(err) {
+                        if (err) { return next(err); }
+                        return res.redirect('/');
+                    });
+                }
+
             } catch(err) {
                 return next(err);
             }
