@@ -2,8 +2,8 @@ const { body, validationResult } = require('express-validator');
 const User = require('../model/user');
 
 passcode_enter_get = (req, res, next) => {
-    // Provide passcode when user is LOGin
-    if (res.locals.currentUser) {
+    // Provide passcode when user is not yet a member
+    if (res.locals.currentUser.status === process.env.MEMBER_THREE) {
         res.render('passcode', { 
             title: 'Passcode',
             user: res.locals.currentUser,
@@ -16,9 +16,21 @@ passcode_enter_get = (req, res, next) => {
 }
 
 passcode_enter_post = [
+
     // Process entered passcode from user
     // Validate and sanitize form fields
-    body("passcode", "Please enter the passcode").trim().isLength({ min: 1}).escape(),
+    body("passcode")
+      .trim()
+      .isLength({ min: 1})
+      .withMessage("Please enter the passcode")
+      .escape()
+      .custom(value => {
+        if (value !== process.env.PASSCODE_MEMBER) {
+            throw new Error('Passcode is incorrect!');
+        }
+        // Indicates the success of this synchronous custom validator
+        return true;    
+       }),
 
     async (req, res, next) => {
 
@@ -40,7 +52,9 @@ passcode_enter_post = [
                 const filter = {username: res.locals.currentUser.username};
                 const update = {status: "MEMBER"};
                 
-                const user = await User.findOneAndUpdate(filter, update);
+                const user = await User.findOneAndUpdate(filter, update, {
+                    new: true
+                });
 
                 // Redirect to homepage after setting status
                 res.redirect("/");
