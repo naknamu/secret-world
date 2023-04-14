@@ -4,19 +4,33 @@ const { body, validationResult } = require('express-validator');
 const bcrypt = require("bcryptjs");
 
 // Display User sign up form on GET
+// IF user is not LOG IN YET
+// Else redirect to homepage
 user_create_get = (req, res, next) => {
-    res.render("signup_form", {
-        title: "Sign Up",
-        user : res.locals.currentUser,
-        errors: undefined,
-    })
+    if (!res.locals.currentUser) {
+        res.render("signup_form", {
+            title: "Sign Up",
+            user : res.locals.currentUser,
+            errors: undefined,
+        })
+    } else {
+        res.redirect('/')
+    }
+
 }
 
 // Display User sign up form on POST
 user_create_post = [ 
     // Validate and sanitize form fields
     body("name", "Name must not be empty").trim().isLength({ min: 1}).escape(),
-    body("username", "Username is required").trim().isLength({ min: 1}).escape(),
+    body("username", "Username is required").trim().isLength({ min: 1}).escape()
+      .custom(value => {
+        return User.findOne({username: value}).then(user => {
+            if (user) {
+                return Promise.reject('Username already in use. Please try another.')
+            }
+        })
+      }),
     body("password", "Password must not be empty").trim().isLength({ min: 1}).escape(),
     body("confirm_password", "Please confirm your password").trim().isLength({ min: 1}).escape()
      .custom((value, { req }) => {
