@@ -2,6 +2,7 @@ const User = require("../model/user");
 
 const { body, validationResult } = require('express-validator');
 const bcrypt = require("bcryptjs");
+const passport = require("passport");
 
 // Display User sign up form on GET
 // IF user is not LOG IN YET
@@ -10,16 +11,15 @@ user_create_get = (req, res, next) => {
     if (!res.locals.currentUser) {
         res.render("signup_form", {
             title: "Sign Up",
-            user : res.locals.currentUser,
+            user : undefined,
             errors: undefined,
         })
     } else {
         res.redirect('/')
     }
-
 }
 
-// Display User sign up form on POST
+// Process sign up form on POST
 user_create_post = [ 
     // Validate and sanitize form fields
     body("name", "Name must not be empty").trim().isLength({ min: 1}).escape(),
@@ -94,4 +94,54 @@ user_logout_get = (req, res, next) => {
     });
 };
 
-module.exports = { user_create_get, user_create_post, user_logout_get};
+// Display User LOGIN form on GET
+// IF user is already LOG IN 
+// Else redirect to homepage
+user_login_get = (req, res, next) => {
+    if (!res.locals.currentUser) {
+        res.render("login_form", {
+            title: "Log in",
+            username : undefined,
+            user: undefined,
+            errors: undefined,
+            username_err: res.locals.username_err,
+            password_err: res.locals.password_err
+        })
+    } else {
+        res.redirect('/')
+    }
+}
+
+// Process login form on POST
+user_login_post = [ 
+    // Validate and sanitize form fields
+    body("username", "Username is required").trim().isLength({ min: 1}).escape(),
+    body("password", "Password must not be empty").trim().isLength({ min: 1}).escape(),
+
+    // Process request after validation and sanitization
+    (req, res, next) => {
+        // Extract the validation errors from request
+        const errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            res.render('login_form', {
+                title: "Log in",
+                username : req.body.username,
+                user: undefined,
+                errors: errors.mapped(),
+            })
+            return;
+        }
+        
+        console.log(res.locals.messages);
+        // if validation is successful, call next() to go on with passport authentication.
+        next();
+    },
+    passport.authenticate('local', {
+        successRedirect: '/',
+        failureRedirect: '/users/log-in',
+        failureFlash: true
+    })
+];
+
+module.exports = { user_create_get, user_create_post, user_logout_get, user_login_get, user_login_post};

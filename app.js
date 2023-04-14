@@ -8,6 +8,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
 const User = require("./model/user");
+const flash = require('connect-flash');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -38,28 +39,39 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: "pirates", resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 app.use(function(req, res, next) {
   res.locals.currentUser = req.user;
+  res.locals.username_err = req.flash("username_err");
+  res.locals.password_err = req.flash("password_err");
   next();
 });
 
 passport.use(
-  new LocalStrategy(async(username, password, done) => {
-    try {
-      const user = await User.findOne({ username: username });
-      if (!user) {
-        return done(null, false, { message: "Incorrect username" });
-      };
-      if (user.password !== password) {
-        return done(null, false, { message: "Incorrect password" });
-      };
-      return done(null, user);
-    } catch(err) {
-      return done(err);
-    };
+  new LocalStrategy({
+    passReqToCallback: true
+  },
+    async(req, username, password, done) => {
+      try {
+          const user = await User.findOne({ username: username});
+          if (!user) {
+              return done(null, false, req.flash("username_err", "Username does not exist. Please try again."));
+          }
+          bcrypt.compare(password, user.password, (err, res) => {
+              if (res) {
+                  // password matched! log user in
+                  return done(null, user);
+              } else {
+                  // password do not match
+                  return done(null, false, req.flash("password_err", "Incorrect password"))
+              }
+          })
+      } catch(err) {
+          return done(err);
+      }
   })
-);
+)
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
