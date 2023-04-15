@@ -10,7 +10,7 @@
     <div class="home section">
         <div class="container">
 
-          <!--NOT LOGGED IN OR LOGGED IN AND NOT A MEMBER-->
+          <!--STRANGER OR LOGGED IN AND NOT A MEMBER-->
 
           <% if (!user || user && !user.membership_status) { %>
             <ul class="grid-list">
@@ -24,9 +24,9 @@
             </ul>
           <% } %>
 
-          <!--LOGGED IN AND MEMBER-->
+          <!--LOGGED IN AND A MEMBER BUT NOT AN ADMIN-->
           
-          <% if (user && user.membership_status) { %>
+          <% if (user && user.membership_status && !user.isAdmin) { %>
             <ul class="grid-list">
               <% messages.forEach(message => { %>
                 <li class="card">
@@ -34,6 +34,25 @@
                   <p class="message-sign">by <%= message.user.name %></p>
                   <p class="section-text"><%= message.message %></p>
                   <p class="message-sign"><%= message.date_posted_formatted %></p>
+                </li>
+              <% }) %>
+            </ul>
+          <% } %>
+
+          <!--LOGGED IN AND AN ADMIN-->
+
+          <% if (user && user.isAdmin) { %>
+            <h1 class="h2 section-title">Hello, admin!</h1>
+            <ul class="grid-list">
+              <% messages.forEach(message => { %>
+                <li class="card">
+                  <h2 class="h3 section-title"><%= message.title %></h2>
+                  <p class="message-sign">by <%= message.user.name %></p>
+                  <p class="section-text"><%= message.message %></p>
+                  <p class="message-sign"><%= message.date_posted_formatted %></p>
+                  <form action="" method="post">
+                    <button type="submit" class="btn btn-secondary">Delete</button>
+                  </form>
                 </li>
               <% }) %>
             </ul>

@@ -18,6 +18,10 @@ const UserSchema = new Schema({
     membership_status: {
         type: Boolean,
         required: true
+    },
+    isAdmin: {
+        type: Boolean,
+        required: true
     }
 })
 

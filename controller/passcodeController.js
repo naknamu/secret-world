@@ -25,9 +25,9 @@ passcode_enter_post = [
       .withMessage("Please enter the passcode")
       .escape()
       .custom(value => {
-        if (value !== process.env.PASSCODE_MEMBER) {
+        if (value !== process.env.PASSCODE_MEMBER && value !== process.env.PASSCODE_ADMIN) {
             throw new Error('Passcode is incorrect!');
-        }
+        } 
         // Indicates the success of this synchronous custom validator
         return true;    
        }),
@@ -51,6 +51,18 @@ passcode_enter_post = [
                 // Set user membership status to MEMBER
                 const filter = {username: res.locals.currentUser.username};
                 const update = {membership_status: true};
+                
+                const user = await User.findOneAndUpdate(filter, update, {
+                    new: true
+                });
+
+                // Redirect to homepage after setting status
+                res.redirect("/");
+            } else if (req.body.passcode === process.env.PASSCODE_ADMIN) {
+
+                // Set user membership status to ADMIN
+                const filter = {username: res.locals.currentUser.username};
+                const update = {membership_status: true, isAdmin: true};
                 
                 const user = await User.findOneAndUpdate(filter, update, {
                     new: true

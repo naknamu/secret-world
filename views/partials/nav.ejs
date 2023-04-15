@@ -51,7 +51,15 @@
          <div class="account-details">
             <div class="h4">Account Details</div>
             <p>username: <%= user.username %></p>
-            <p>membership status: <br> <%= (user.membership_status) ? "MEMBER" : "NOT A MEMBER" %> </br></p>
+            <p>membership status: 
+              <% if (user.isAdmin) { %>
+                <br> <%= "ADMIN" %> </br>
+              <% } else if (user.membership_status) { %>
+                <br> <%= "MEMBER" %> </br>
+              <% } else { %>
+                <br> <%= "NOT A MEMBER" %> </br>
+              <% } %>
+            </p>
          </div>
         <% } %>
 

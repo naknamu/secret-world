@@ -57,6 +57,7 @@ user_create_post = [
                     username: req.body.username,
                     password: hashedPassword,
                     membership_status: false,
+                    isAdmin: false,
                 })
                 // Return to sign up form if errors in validation
                 if (!errors.isEmpty()) {
