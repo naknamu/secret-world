@@ -7,11 +7,38 @@
     
     <%- include('partials/nav', {user, errors}); %>
 
-    <div class="signup section">
+    <div class="home section">
         <div class="container">
-          <% if (user) { %>
-            <h1>Hello <%= user.name %>!</h1>
+
+          <!--NOT LOGGED IN OR LOGGED IN AND NOT A MEMBER-->
+
+          <% if (!user || user && user.status === process.env.MEMBER_THREE) { %>
+            <ul class="grid-list">
+              <% messages.forEach(message => { %>
+                <li class="card">
+                  <h2 class="h2 section-title"><%= message.title %></h2>
+                  <p class="section-text"><%= message.message %></p>
+                  <p class="message-sign">Become a member to see who wrote this post and when.</p>
+                </li>
+              <% }) %>
+            </ul>
           <% } %>
+
+          <!--LOGGED IN AND MEMBER-->
+          
+          <% if (user && user.status === process.env.MEMBER_TWO) { %>
+            <ul class="grid-list">
+              <% messages.forEach(message => { %>
+                <li class="card">
+                  <h3 class="h3 section-title"><%= message.title %></h3>
+                  <p class="message-sign">by <%= user.name %></p>
+                  <p class="section-text"><%= message.message %></p>
+                  <p class="message-sign"><%= message.date_posted_formatted %></p>
+                </li>
+              <% }) %>
+            </ul>
+          <% } %>
+
         </div>
     </div>
 

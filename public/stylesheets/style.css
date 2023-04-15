@@ -40,8 +40,9 @@
   --foreground-primary: rgb(209 213 219);
   --foreground-secondary: rgb(156 163 175);
   --foreground-tertiary: hsl(214, 20%, 69%);
+  --foreground-hidden: rgb(107, 114, 128);;
 
-   --accent: hsl(175, 98%, 24%);
+  --accent: hsl(175, 98%, 24%);
 
   /**
 * typography
@@ -58,6 +59,7 @@
   --fs-6: 1.7rem;
   --fs-7: 1.5rem;
   --fs-8: 1.4rem;
+  --fs-9: 1.3rem;
 
   --fw-700: 700;
 
@@ -271,4 +273,41 @@ body.nav-active {
 .section-title {
   margin-block-end: 16px;
 }
+
+.card {
+  background-color: var(--background-hero);
+  padding: 32px;
+  border-radius: var(--radius-8);
+  display: grid;
+  gap: 12px;
+}
+
+
+/*-----------------------------------*\
+  INDEX BODY MESSAGES
+\*-----------------------------------*/
+
+.home {
+  margin-block-start: calc(var(--section-padding-s));
+}
+
+.grid-list {
+  display: grid;
+  gap: 20px;
+}
+
+.grid-list .section-title{
+  margin-block-end: 8px;
+}
+
+.anonymous {
+  font-size: var(--fs-8);
+  color: var(--foreground-hidden);
+}
+
+.message-sign {
+  font-size: var(--fs-8);
+  color: var(--foreground-hidden);
+}
+
 

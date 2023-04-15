@@ -2,12 +2,12 @@
     margin-block-start: calc(var(--section-padding-s) + 50px);
 }
 
-.card {
+/* .card {
     padding: 32px;
     border-radius: var(--radius-8);
     display: grid;
     gap: 40px;
-}
+} */
 
 .input-field {
     background-color: var(--background-primary);

@@ -20,7 +20,13 @@ message_create_get = (req, res, next) => {
 message_create_post = [ 
     // Validate and sanitize form fields
     body("title", "Title must not be empty").trim().isLength({ min: 1}).escape(),
-    body("message", "Your message is required").trim().isLength({ min: 1}).escape(),
+    body("message")
+      .trim()
+      .isLength({ min: 1})
+      .withMessage("Your message is required")
+      .isLength({ max: 300})
+      .withMessage("You exceeded the maximum characters allowed which is 300")
+      .escape(),
 
     // Process request after validation and sanitization
     async (req, res, next) => {
