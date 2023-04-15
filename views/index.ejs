@@ -51,6 +51,7 @@
                   <p class="section-text"><%= message.message %></p>
                   <p class="message-sign"><%= message.date_posted_formatted %></p>
                   <form action="" method="post">
+                    <input type="hidden" name="message_id" value="<%= message._id %>">
                     <button type="submit" class="btn btn-secondary">Delete</button>
                   </form>
                 </li>

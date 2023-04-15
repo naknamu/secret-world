@@ -1,6 +1,6 @@
 const Message = require('../model/message')
 
-exports.index_get = async (req, res, next) => {
+index_get = async (req, res, next) => {
 
     const messages = await Message.find()
       .sort({date_posted: -1})
@@ -14,3 +14,12 @@ exports.index_get = async (req, res, next) => {
         messages
     });
 }
+
+message_delete_post = async (req, res, next) => {
+  // Delete message through the message id
+  await Message.findByIdAndRemove(req.body.message_id);
+  // Redirect to homepage
+  res.redirect("/");
+}
+
+module.exports = {index_get, message_delete_post}
