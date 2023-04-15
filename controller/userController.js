@@ -22,7 +22,13 @@ user_create_get = (req, res, next) => {
 // Process sign up form on POST
 user_create_post = [ 
     // Validate and sanitize form fields
-    body("name", "Name must not be empty").trim().isLength({ min: 1}).escape(),
+    body("name")
+      .trim()
+      .isLength({ min: 1})
+      .withMessage("Name must not be empty")
+      .isAlpha()
+      .withMessage("Name must only consists of letters!")
+      .escape(),
     body("username", "Username is required").trim().isLength({ min: 1}).escape()
       .custom(value => {
         return User.findOne({username: value}).then(user => {
@@ -31,7 +37,13 @@ user_create_post = [
             }
         })
       }),
-    body("password", "Password must not be empty").trim().isLength({ min: 1}).escape(),
+    body("password")
+      .trim()
+      .not().isEmpty()
+      .withMessage("Password must not be empty")
+      .isLength({ min: 8})
+      .withMessage("Password must be at least 8 characters long (e.g., Good143! or welcome155).")
+      .escape(),
     body("confirm_password", "Please confirm your password").trim().isLength({ min: 1}).escape()
      .custom((value, { req }) => {
         if (value !== req.body.password) {
