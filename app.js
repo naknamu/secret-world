@@ -10,9 +10,10 @@ const bcrypt = require("bcryptjs");
 const User = require("./model/user");
 const flash = require('connect-flash');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var passcodeRouter = require('./routes/passcode');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const passcodeRouter = require('./routes/passcode');
+const messageRouter = require('./routes/message');
 
 
 require('dotenv').config()
@@ -89,6 +90,7 @@ passport.deserializeUser(async function(id, done) {
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/passcode', passcodeRouter);
+app.use('/create-message', messageRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

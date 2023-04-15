@@ -23,13 +23,13 @@
           <!--TRUE WHEN USER EXIST AND NO ERRORS FOUND-->
           <% if (user && !errors) { %>
             <li>
-              <a href="#" class="navbar-link">Create New Message</a>
+              <a href="/create-message" class="navbar-link">Create New Message</a>
             </li>
 
             <!--ENABLE PASSCODE ENTER WHEN USER IS NOT A MEMBER-->
             <% if (user.status === process.env.MEMBER_THREE) { %>
               <li>
-                <a href="/passcode" class="navbar-link">Enter Passcode</a>
+                <a href="/passcode" class="navbar-link">Join the Club</a>
               </li>
             <% } %>
             <li>
