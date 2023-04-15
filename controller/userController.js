@@ -56,7 +56,7 @@ user_create_post = [
                     name: req.body.name,
                     username: req.body.username,
                     password: hashedPassword,
-                    status: process.env.MEMBER_THREE,
+                    membership_status: false,
                 })
                 // Return to sign up form if errors in validation
                 if (!errors.isEmpty()) {

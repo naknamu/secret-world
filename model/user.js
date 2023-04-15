@@ -15,9 +15,8 @@ const UserSchema = new Schema({
         type: String,
         required: true,
     },
-    status: {
-        type: String,
-        ref: "Status",
+    membership_status: {
+        type: Boolean,
         required: true
     }
 })

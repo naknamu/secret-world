@@ -50,7 +50,7 @@ passcode_enter_post = [
 
                 // Set user membership status to MEMBER
                 const filter = {username: res.locals.currentUser.username};
-                const update = {status: "MEMBER"};
+                const update = {membership_status: true};
                 
                 const user = await User.findOneAndUpdate(filter, update, {
                     new: true

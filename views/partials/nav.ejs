@@ -27,7 +27,7 @@
             </li>
 
             <!--ENABLE PASSCODE ENTER WHEN USER IS NOT A MEMBER-->
-            <% if (user.status === process.env.MEMBER_THREE) { %>
+            <% if (!user.membership_status) { %>
               <li>
                 <a href="/passcode" class="navbar-link">Join the Club</a>
               </li>
@@ -51,7 +51,7 @@
          <div class="account-details">
             <div class="h4">Account Details</div>
             <p>username: <%= user.username %></p>
-            <p>membership status: <br> <%= user.status %> </br></p>
+            <p>membership status: <br> <%= (user.membership_status) ? "MEMBER" : "NOT A MEMBER" %> </br></p>
          </div>
         <% } %>
 
