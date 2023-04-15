@@ -7,6 +7,6 @@ const message_controller = require("../controller/messageController")
 router.get('/', message_controller.message_create_get);
 
 // POST request for Passcode Enter
-// router.post('/', passcode_controller.passcode_enter_post);
+router.post('/', message_controller.message_create_post);
 
 module.exports = router;
