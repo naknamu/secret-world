@@ -40,7 +40,7 @@ const handleEvent = () => {
 
 if (accountLink) {
   accountLink.addEventListener("click", handleEvent);
-  //for hover
-  // accountLink.addEventListener("mouseenter", handleEvent);
-  // accountLink.addEventListener("mouseleave", handleEvent);
+} else {
+  // Change spacing/postion of navlink when user is logged in
+  navbar.style.flexGrow = 0;
 }
