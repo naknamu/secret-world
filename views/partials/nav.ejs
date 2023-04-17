@@ -46,22 +46,26 @@
           <% } %>
 
         </ul>
+
         <!--TRUE WHEN USER EXIST AND NO ERRORS FOUND-->
         <% if (user && !errors) { %>
-         <div class="account-details">
-            <div class="h4">Account Details</div>
-            <p>username: <%= user.username %></p>
-            <p>membership status: 
-              <% if (user.isAdmin) { %>
-                <br> <%= "ADMIN" %> </br>
-              <% } else if (user.membership_status) { %>
-                <br> <%= "MEMBER" %> </br>
-              <% } else { %>
-                <br> <%= "NOT A MEMBER" %> </br>
-              <% } %>
-            </p>
-         </div>
-        <% } %>
+          <div class="account-details">
+              <div class="navbar-link" data-account-link>Account</div>
+              <div class="account-wrapper" data-account-details>
+                <p class="h4"> <strong> <%= user.name %> </strong> </p>
+                <p> <strong> username: </strong> <%= user.username %></p>
+                <p> <strong> membership status: </strong>
+                  <% if (user.isAdmin) { %>
+                    <br> <%= "ADMIN" %> </br>
+                  <% } else if (user.membership_status) { %>
+                    <br> <%= "MEMBER" %> </br>
+                  <% } else { %>
+                    <br> <%= "NOT A MEMBER" %> </br>
+                  <% } %>
+                </p>
+              </div>
+          </div>
+          <% } %>
 
       </nav>
 

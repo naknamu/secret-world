@@ -41,7 +41,7 @@ user_create_post = [
       .trim()
       .not().isEmpty()
       .withMessage("Password must not be empty")
-      .isLength({ min: 8})
+    //   .isLength({ min: 8})
       .withMessage("Password must be at least 8 characters long (e.g., Good143! or welcome155).")
       .escape(),
     body("confirm_password", "Please confirm your password").trim().isLength({ min: 1}).escape()

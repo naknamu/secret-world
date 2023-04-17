@@ -305,4 +305,168 @@ body.nav-active {
   color: var(--foreground-hidden);
 }
 
+/*-----------------------------------*\
+  #MEDIA QUERIES
+\*-----------------------------------*/
+
+/**
+* responsive for larger than 575px screen
+*/
+
+@media (min-width: 575px) {
+  /**
+* REUSED STYLE
+*/
+
+  .container {
+    max-width: 540px;
+    width: 100%;
+    margin-inline: auto;
+  }
+
+}
+
+@media (min-width: 768px) {
+  /**
+* REUSED STYLE
+*/
+
+  .container {
+    max-width: 720px;
+  }
+
+  .section-text {
+    --fs-5: 2rem;
+  }
+}
+
+@media (min-width: 992px) {
+
+/**
+* RESET
+*/
+
+.h1 {
+  font-size: var(--fs-2);
+}
+
+
+/**
+* REUSED STYLE
+*/
+
+.container {
+  max-width: 960px;
+}
+
+/**
+* HEADER
+*/
+
+.nav-open-btn,
+.navbar-top,
+.navbar .overlay {
+  display: none;
+}
+
+.navbar,
+.navbar.active {
+  all: unset;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.navbar-list {
+  display: flex;
+  gap: 36px;
+  margin-inline: auto;
+}
+
+.navbar-link {
+  color: var(--foreground-primary);
+}
+
+.navbar-link:is(:hover, :focus-visible) {
+  color: var(--sea-blue);
+}
+
+.header {
+  max-width: 960px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.header.active {
+  top: 0;
+  left: 0;
+  max-width: unset;
+  border-radius: 0;
+}
+
+.account-details {
+  position: relative;
+}
+
+
+.account-wrapper {
+  position: absolute;
+  background-color: var(--sea-blue);
+  color: var(--foreground-primary);
+  top: -200px;
+  padding: 18px;
+  font-size: var(--fs-7);
+  z-index: 5;
+  border-radius: var(--radius-6);
+  left: -55px;
+  width: 170px;
+  visibility: hidden;
+  transition: var(--transition-2);
+}
+
+.account-wrapper.active {
+  visibility: visible;
+  transform: translateY(265px);
+}
+
+}
+
+/**
+* responsive for large than 1200px screen
+*/
+
+@media (min-width: 1200px) {
+
+/**
+* REUSED STYLE
+*/
+
+.container,
+.header {
+  max-width: 1140px;
+}
+
+.account-wrapper, .account-wrapper.active {
+  width: 222px;
+  left: -75px;
+}
+
+}
+
+/**
+ * responsive for large than 1400px screen
+ */
+
+ @media (min-width: 1400px) {
+  /**
+  * REUSED STYLE
+  */
+
+  .container,
+  .header {
+    max-width: 1320px;
+  }
+
+ }
+
 
