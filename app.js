@@ -9,6 +9,8 @@ const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
 const User = require("./model/user");
 const flash = require("connect-flash");
+const compression = require("compression");
+const helmet = require("helmet");
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
@@ -29,6 +31,9 @@ var app = express();
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+
+app.use(compression()); // Compress all routes
+app.use(helmet());
 
 app.use(logger("dev"));
 app.use(express.json());
