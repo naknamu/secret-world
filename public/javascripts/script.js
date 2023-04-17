@@ -35,17 +35,12 @@ const accountDetails = document.querySelector("[data-account-details]");
 
 const handleEvent = () => {
   // Toggle class to active to add some style
-  accountDetails.classList.toggle('active')
-}
-
+  accountDetails.classList.toggle("active");
+};
 
 if (accountLink) {
-  accountLink.addEventListener("click", handleEvent); 
+  accountLink.addEventListener("click", handleEvent);
   //for hover
-  // accountLink.addEventListener("mouseenter", handleEvent); 
+  // accountLink.addEventListener("mouseenter", handleEvent);
   // accountLink.addEventListener("mouseleave", handleEvent);
 }
-
-
-
-

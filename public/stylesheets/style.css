@@ -26,7 +26,7 @@
 
   color-scheme: dark; /* dark supported */
 
-/**
+  /**
 * dark theme colors 
 */
 
@@ -40,7 +40,7 @@
   --foreground-primary: rgb(209 213 219);
   --foreground-secondary: rgb(156 163 175);
   --foreground-tertiary: hsl(214, 20%, 69%);
-  --foreground-hidden: rgb(107, 114, 128);;
+  --foreground-hidden: rgb(107, 114, 128);
 
   --accent: hsl(175, 98%, 24%);
 
@@ -48,8 +48,8 @@
 * typography
 */
 
-  --ff-courgette: 'Courgette', cursive;
-  --ff-montserrat: 'Montserrat', sans-serif;
+  --ff-courgette: "Courgette", cursive;
+  --ff-montserrat: "Montserrat", sans-serif;
 
   --fs-1: calc(2.7rem + 1.38vw);
   --fs-2: calc(2.6rem + 0.66vw);
@@ -282,7 +282,6 @@ body.nav-active {
   gap: 12px;
 }
 
-
 /*-----------------------------------*\
   INDEX BODY MESSAGES
 \*-----------------------------------*/
@@ -296,7 +295,7 @@ body.nav-active {
   gap: 20px;
 }
 
-.grid-list .section-title{
+.grid-list .section-title {
   margin-block-end: 8px;
 }
 
@@ -323,7 +322,6 @@ body.nav-active {
     width: 100%;
     margin-inline: auto;
   }
-
 }
 
 @media (min-width: 768px) {
@@ -341,94 +339,90 @@ body.nav-active {
 }
 
 @media (min-width: 992px) {
-
-/**
+  /**
 * RESET
 */
 
-.h1 {
-  font-size: var(--fs-2);
-}
+  .h1 {
+    font-size: var(--fs-2);
+  }
 
-
-/**
+  /**
 * REUSED STYLE
 */
 
-.container {
-  max-width: 960px;
-}
+  .container {
+    max-width: 960px;
+  }
 
-/**
+  /**
 * HEADER
 */
 
-.nav-open-btn,
-.navbar-top,
-.navbar .overlay {
-  display: none;
-}
+  .nav-open-btn,
+  .navbar-top,
+  .navbar .overlay {
+    display: none;
+  }
 
-.navbar,
-.navbar.active {
-  all: unset;
-  display: flex;
-  flex-grow: 1;
-  align-items: center;
-}
+  .navbar,
+  .navbar.active {
+    all: unset;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+  }
 
-.navbar-list {
-  display: flex;
-  gap: 36px;
-  margin-inline: auto;
-}
+  .navbar-list {
+    display: flex;
+    gap: 36px;
+    margin-inline: auto;
+  }
 
-.navbar-link {
-  color: var(--foreground-primary);
-}
+  .navbar-link {
+    color: var(--foreground-primary);
+  }
 
-.navbar-link:is(:hover, :focus-visible) {
-  color: var(--sea-blue);
-}
+  .navbar-link:is(:hover, :focus-visible) {
+    color: var(--sea-blue);
+  }
 
-.header {
-  max-width: 960px;
-  left: 50%;
-  transform: translateX(-50%);
-}
+  .header {
+    max-width: 960px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
-.header.active {
-  top: 0;
-  left: 0;
-  max-width: unset;
-  border-radius: 0;
-}
+  .header.active {
+    top: 0;
+    left: 0;
+    max-width: unset;
+    border-radius: 0;
+  }
 
-.account-details {
-  position: relative;
-}
+  .account-details {
+    position: relative;
+  }
 
+  .account-wrapper {
+    position: absolute;
+    background-color: var(--sea-blue);
+    color: var(--foreground-primary);
+    top: -200px;
+    padding: 18px;
+    font-size: var(--fs-7);
+    z-index: 5;
+    border-radius: var(--radius-6);
+    left: -55px;
+    width: 170px;
+    visibility: hidden;
+    transition: var(--transition-2);
+  }
 
-.account-wrapper {
-  position: absolute;
-  background-color: var(--sea-blue);
-  color: var(--foreground-primary);
-  top: -200px;
-  padding: 18px;
-  font-size: var(--fs-7);
-  z-index: 5;
-  border-radius: var(--radius-6);
-  left: -55px;
-  width: 170px;
-  visibility: hidden;
-  transition: var(--transition-2);
-}
-
-.account-wrapper.active {
-  visibility: visible;
-  transform: translateY(265px);
-}
-
+  .account-wrapper.active {
+    visibility: visible;
+    transform: translateY(265px);
+  }
 }
 
 /**
@@ -436,28 +430,27 @@ body.nav-active {
 */
 
 @media (min-width: 1200px) {
-
-/**
+  /**
 * REUSED STYLE
 */
 
-.container,
-.header {
-  max-width: 1140px;
-}
+  .container,
+  .header {
+    max-width: 1140px;
+  }
 
-.account-wrapper, .account-wrapper.active {
-  width: 222px;
-  left: -75px;
-}
-
+  .account-wrapper,
+  .account-wrapper.active {
+    width: 222px;
+    left: -75px;
+  }
 }
 
 /**
  * responsive for large than 1400px screen
  */
 
- @media (min-width: 1400px) {
+@media (min-width: 1400px) {
   /**
   * REUSED STYLE
   */
@@ -466,7 +459,4 @@ body.nav-active {
   .header {
     max-width: 1320px;
   }
-
- }
-
-
+}

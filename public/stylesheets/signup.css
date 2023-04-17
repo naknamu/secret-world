@@ -1,5 +1,5 @@
 .signup {
-    margin-block-start: calc(var(--section-padding-s) + 50px);
+  margin-block-start: calc(var(--section-padding-s) + 50px);
 }
 
 /* .card {
@@ -10,20 +10,20 @@
 } */
 
 .input-field {
-    background-color: var(--background-primary);
-    color: var(--foreground-secondary);
-    font-size: var(--fs-7);
-    padding: 14px 18px;
-    border-radius: var(--radius-6);
-    outline: none;
-    margin-block-end: 20px;
+  background-color: var(--background-primary);
+  color: var(--foreground-secondary);
+  font-size: var(--fs-7);
+  padding: 14px 18px;
+  border-radius: var(--radius-6);
+  outline: none;
+  margin-block-end: 20px;
 }
 
 .input-field::placeholder {
-    color: var(--manatee);
+  color: var(--manatee);
 }
 
 .error {
-    color: var(--cinnamon-satin);
-    transform: translateY(-18px);
+  color: var(--cinnamon-satin);
+  transform: translateY(-18px);
 }

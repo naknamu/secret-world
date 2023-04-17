@@ -3,17 +3,16 @@
 \*-----------------------------------*/
 
 .footer {
-    padding-block: 30px;
-  }
+  padding-block: 30px;
+}
 
-  .footer .container {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
-  }
+.footer .container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
 
-  
-  .footer .social-link {
-    color: var(--charcoal);
-  }
+.footer .social-link {
+  color: var(--charcoal);
+}
