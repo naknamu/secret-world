@@ -45,7 +45,7 @@ user_create_post = [
     .not()
     .isEmpty()
     .withMessage("Password must not be empty")
-    //   .isLength({ min: 8})
+    .isLength({ min: 8})
     .withMessage(
       "Password must be at least 8 characters long (e.g., Good143! or welcome155)."
     )
