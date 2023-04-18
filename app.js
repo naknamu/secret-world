@@ -28,7 +28,7 @@ require("dotenv").config();
 // const db = mongoose.connection;
 // db.on("error", console.error.bind(console, "mongo connection error"));
 
-// Set up mongoose connection deployed in cyclic
+// Set up mongoose connection deployment
 const connectDB = async () => {
   try {
     const conn = await mongoose.connect(process.env.MONGO_URI);
