@@ -3,7 +3,7 @@ const User = require("../model/user");
 
 passcode_enter_get = (req, res, next) => {
   // Provide passcode when user is not yet a member
-  if (res.locals.currentUser.status === process.env.MEMBER_THREE) {
+  if (!res.locals.currentUser.status) {
     res.render("passcode", {
       title: "Passcode",
       user: res.locals.currentUser,
