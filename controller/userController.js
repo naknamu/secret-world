@@ -26,8 +26,7 @@ user_create_post = [
     .trim()
     .isLength({ min: 1 })
     .withMessage("Name must not be empty")
-    .isAlpha()
-    .withMessage("Name must only consists of letters!")
+    .matches(/^[A-Za-z\s]+$/).withMessage('Name must be alphabetic.')
     .escape(),
   body("username", "Username is required")
     .trim()
