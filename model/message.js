@@ -11,6 +11,7 @@ const MessageSchema = new Schema({
   },
   date_posted: {
     type: Date,
+    default: Date.now,
     required: true,
   },
   message: {
@@ -26,10 +27,7 @@ const MessageSchema = new Schema({
 });
 
 MessageSchema.virtual("date_posted_formatted").get(function () {
-  return this.date_posted
-    ? DateTime.fromJSDate(this.date_posted).toFormat("LLL dd, yyyy, hh:mm a")
-    : "";
-    
+  return DateTime.fromJSDate(this.date_posted).toLocaleString(DateTime.DATETIME_MED);
 });
 
 module.exports = mongoose.model("Message", MessageSchema);
