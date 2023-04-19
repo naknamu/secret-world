@@ -27,7 +27,7 @@ const MessageSchema = new Schema({
 });
 
 MessageSchema.virtual("date_posted_formatted").get(function () {
-  return DateTime.fromJSDate(this.date_posted).toJSDate()
+  return this.date_posted.toLocaleString('en-CA')
 });
 
 module.exports = mongoose.model("Message", MessageSchema);
