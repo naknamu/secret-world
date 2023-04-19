@@ -21,7 +21,7 @@ const PORT = process.env.PORT || 3000
 
 require("dotenv").config();
 
-const mongoDB = process.env.MONGO_URI_DEV;
+let mongoDB = process.env.MONGO_URI_DEV;
 
 // If in prod environment, use prod database
 if (process.env.NODE_ENV === 'production') {
