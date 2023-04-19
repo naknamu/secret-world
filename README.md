@@ -9,10 +9,10 @@ An exclusive clubhouse where members can write anonymous posts.
 </figure>
 
 ## Live Demo
-Check the live demo [here.](https://secret-world-production.up.railway.app/)
+Check the live demo [here.](https://secret-world-production.up.railway.app/) 🧐
 
 ## Passcode 
-*(needed to become a member)*  
+*(needed to become a member)* 🔑  
 <mark style="background-color: gray">SAKALAM</mark>
 
 ## Features
