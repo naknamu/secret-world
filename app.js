@@ -17,14 +17,14 @@ const passcodeRouter = require("./routes/passcode");
 const messageRouter = require("./routes/message");
 
 var app = express();
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000;
 
 require("dotenv").config();
 
 let mongoDB = process.env.MONGO_URI_DEV;
 
 // If in prod environment, use prod database
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
   mongoDB = process.env.MONGO_URI;
 }
 
@@ -37,8 +37,7 @@ const connectDB = async () => {
     console.log(error);
     process.exit(1);
   }
-}
-
+};
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -137,8 +136,8 @@ app.use(function (err, req, res, next) {
 //Connect to the database before listening
 connectDB().then(() => {
   app.listen(PORT, () => {
-      console.log("listening for requests");
-  })
-})
+    console.log("listening for requests");
+  });
+});
 
 module.exports = app;

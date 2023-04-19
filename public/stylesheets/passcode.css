@@ -1,9 +1,9 @@
 .passcode-sign {
-    font-size: var(--fs-8);
-    color: var(--foreground-hidden);
-    margin-block-end: 18px;
+  font-size: var(--fs-8);
+  color: var(--foreground-hidden);
+  margin-block-end: 18px;
 }
 
 .passcode-sign a {
-    text-decoration: underline;
+  text-decoration: underline;
 }

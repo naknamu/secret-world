@@ -26,7 +26,8 @@ user_create_post = [
     .trim()
     .isLength({ min: 1 })
     .withMessage("Name must not be empty")
-    .matches(/^[A-Za-z\s]+$/).withMessage('Name must be alphabetic.')
+    .matches(/^[A-Za-z\s]+$/)
+    .withMessage("Name must be alphabetic.")
     .escape(),
   body("username", "Username is required")
     .trim()
@@ -44,7 +45,7 @@ user_create_post = [
     .not()
     .isEmpty()
     .withMessage("Password must not be empty")
-    .isLength({ min: 8})
+    .isLength({ min: 8 })
     .withMessage(
       "Password must be at least 8 characters long (e.g., Good143! or welcome155)."
     )

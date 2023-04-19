@@ -9,20 +9,24 @@ An exclusive clubhouse where members can write anonymous posts.
 </figure>
 
 ## Live Demo
+
 Check the live demo [here.](https://secret-world-production.up.railway.app/) 🧐
 
-## Passcode 
-> needed to become a member 🔑  
+## Passcode
+
+> needed to become a member 🔑
 
 `SAKALAM`
 
 ## Features
+
 - Beautiful, clean and dark-themed UI interface.
 - Responsive design that works well in mobile, tablet and large screen devices.
 - User's passwords are secured and encrypted by a hashing algorithm.
 - Create and post messages online
 
 ## Technologies Used
+
 - [NodeJS](https://nodejs.org/en)
 - [ExpressJS](https://expressjs.com/)
 - [MongoDB](https://www.mongodb.com/)
@@ -33,6 +37,5 @@ Check the live demo [here.](https://secret-world-production.up.railway.app/) �
 - [Luxon](https://www.npmjs.com/package/luxon)
 
 ## License
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/naknamu/secret-world/blob/main/LICENSE)
-
-
