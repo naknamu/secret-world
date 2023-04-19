@@ -36,7 +36,7 @@ message_create_post = [
     // Create message object from submitted form
     const message = new Message({
       title: req.body.title,
-      date_posted: new Date(),
+      date_posted: Date.now(),
       message: req.body.message,
       user: res.locals.currentUser,
     });
