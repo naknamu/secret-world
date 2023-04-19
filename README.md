@@ -14,7 +14,7 @@ Check the live demo [here.](https://secret-world-production.up.railway.app/) ðŸ§
 ## Passcode 
 > needed to become a member ðŸ”‘  
 
-<mark style="background-color: gray">SAKALAM</mark>
+`SAKALAM`
 
 ## Features
 - Beautiful, clean and dark-themed UI interface.
