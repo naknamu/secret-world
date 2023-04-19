@@ -1,5 +1,7 @@
 const Message = require("../model/message");
 
+const { DateTime } = require("luxon");
+
 index_get = async (req, res, next) => {
   const messages = await Message.find()
     .sort({ date_posted: -1 })
@@ -11,6 +13,7 @@ index_get = async (req, res, next) => {
     user: res.locals.currentUser,
     errors: undefined,
     messages,
+    DateTime
   });
 };
 
