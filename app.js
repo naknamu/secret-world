@@ -21,13 +21,6 @@ const PORT = process.env.PORT || 3000
 
 require("dotenv").config();
 
-// Set up mongoose connection
-// const mongoose = require("mongoose");
-// const mongoDb = process.env.DB_URL;
-// mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
-// const db = mongoose.connection;
-// db.on("error", console.error.bind(console, "mongo connection error"));
-
 // Set up mongoose connection deployment
 const connectDB = async () => {
   try {
