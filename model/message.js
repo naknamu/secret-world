@@ -27,9 +27,7 @@ const MessageSchema = new Schema({
 
 MessageSchema.virtual("date_posted_formatted").get(function () {
   return this.date_posted
-    ? DateTime.fromJSDate(this.date_posted).toLocaleString(
-        DateTime.DATETIME_MED
-      )
+    ? DateTime.fromJSDate(this.date_posted).setLocale('en-US').toLocaleString(DateTime.DATETIME_MED)
     : "";
 });
 
