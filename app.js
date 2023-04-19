@@ -21,10 +21,17 @@ const PORT = process.env.PORT || 3000
 
 require("dotenv").config();
 
+const mongoDB = process.env.MONGO_URI_DEV;
+
+// If in prod environment, use prod database
+if (process.env.NODE_ENV === 'production') {
+  mongoDB = process.env.MONGO_URI;
+}
+
 // Set up mongoose connection deployment
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGO_URI);
+    const conn = await mongoose.connect(mongoDB);
     console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
     console.log(error);

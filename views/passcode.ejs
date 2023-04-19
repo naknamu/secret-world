@@ -18,6 +18,7 @@
                     <div class="form-group">
                         <label for="passcode">Passcode:</label>
                         <input type="password" name="passcode" id="passcode" class="input-field">
+                        <p class="passcode-sign"> <b>Note:</b> Passcode can be found <a href="https://github.com/naknamu/secret-world" target="_blank" style="display: inline;"> here.</a></p>
                         <% if (passcodeErr) { %>
                           <div class="error"><%= (passcodeErr.passcode) ? passcodeErr.passcode.msg : "" %></div>
                       <% } %>
