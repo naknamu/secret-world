@@ -17,7 +17,6 @@ const passcodeRouter = require("./routes/passcode");
 const messageRouter = require("./routes/message");
 
 var app = express();
-const PORT = process.env.PORT || 3000;
 
 require("dotenv").config();
 
@@ -29,15 +28,9 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Set up mongoose connection deployment
-const connectDB = async () => {
-  try {
-    const conn = await mongoose.connect(mongoDB);
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
-  } catch (error) {
-    console.log(error);
-    process.exit(1);
-  }
-};
+mongoose.connect(mongoDB, { useUnifiedTopology: true, useNewUrlParser: true });
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "mongo connection error"));
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -131,13 +124,6 @@ app.use(function (err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render("error");
-});
-
-//Connect to the database before listening
-connectDB().then(() => {
-  app.listen(PORT, () => {
-    console.log("listening for requests");
-  });
 });
 
 module.exports = app;
