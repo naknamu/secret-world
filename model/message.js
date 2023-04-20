@@ -27,7 +27,7 @@ const MessageSchema = new Schema({
 }, { timestamps : true});
 
 MessageSchema.virtual("date_posted_formatted").get(function () {
-  return DateTime.fromJSDate(this.date_posted).toLocaleString(DateTime.DATETIME_MED);
+  return this.date_posted.toLocaleString('en-US', {timeZone: 'America/New_York' });
 });
 
 
