@@ -27,7 +27,6 @@ const MessageSchema = new Schema({
 }, { timestamps : true});
 
 MessageSchema.virtual("date_posted_formatted").get(function () {
-
   return this.date_posted.toLocaleString();
 });
 

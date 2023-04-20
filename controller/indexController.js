@@ -6,6 +6,8 @@ index_get = async (req, res, next) => {
     .populate("user")
     .exec();
 
+    console.log("Timezone offset: " + new Date().getTimezoneOffset());
+
   res.render("index", {
     title: "Home",
     user: res.locals.currentUser,

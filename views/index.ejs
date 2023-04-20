@@ -33,7 +33,7 @@
                   <h2 class="h3 section-title"><%= message.title %></h2>
                   <p class="message-sign">by <%= message.user.name %></p>
                   <p class="section-text"><%= message.message %></p>
-                  <p class="message-sign"><%=  new Date().getTimezoneOffset() %></p>
+                  <p class="message-sign"><%=  %></p>
                 </li>
               <% }) %>
             </ul>
