@@ -33,7 +33,7 @@
                   <h2 class="h3 section-title"><%= message.title %></h2>
                   <p class="message-sign">by <%= message.user.name %></p>
                   <p class="section-text"><%= message.message %></p>
-                  <p class="message-sign"><%= message.date_posted_formatted %></p>
+                  <p class="message-sign" id="date_posted"><%= message.date_posted %></p>
 
                   <!--IF USER IS AN ADMIN, SHOW DELETE BUTTON-->
                   <% if (user.isAdmin) { %>

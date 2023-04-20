@@ -44,3 +44,21 @@ if (accountLink) {
   // Change spacing/postion of navlink when user is logged in
   navbar.style.flexGrow = 0;
 }
+
+/**FORMAT DATE IN USER'S LOCAL TIME **/
+
+const date_posted = document.querySelectorAll("#date_posted");
+
+if (date_posted) {
+  for(let i=0; i<date_posted.length; i++) {
+
+    let localDate = new Intl.DateTimeFormat('en-US', {
+      dateStyle: 'full',
+      timeStyle: 'short',
+    }).format(new Date(date_posted[i].innerHTML))
+    
+    // Assign local date in the browser
+    date_posted[i].innerHTML = localDate;
+  }
+}
+
