@@ -27,7 +27,8 @@ const MessageSchema = new Schema({
 }, { timestamps : true});
 
 MessageSchema.virtual("date_posted_formatted").get(function () {
-  return new Date(this.date_posted);
+  const newDate = new Date(this.date_posted.getTime() - this.date_posted.getTimezoneOffset()*60*1000);
+  return newDate;
 });
 
 
