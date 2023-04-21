@@ -16,13 +16,14 @@
             <ul class="grid-list">
               <% messages.forEach(message => { %>
                 <li class="card">
-                  <h2 class="h3 section-title"><%= message.title %></h2>
-                  <p class="section-text"><%= message.message %></p>
+                  <h2 class="h3 section-title"><%- message.title %></h2>
+                  <p class="section-text"><%- message.message %></p>
                   <p class="message-sign"> <b>Note:</b> Become a member to see who wrote this post and when.</p>
                 </li>
               <% }) %>
             </ul>
           <% } %>
+
 
           <!--LOGGED IN AND A MEMBER BUT NOT AN ADMIN-->
           
@@ -30,9 +31,9 @@
             <ul class="grid-list">
               <% messages.forEach(message => { %>
                 <li class="card">
-                  <h2 class="h3 section-title"><%= message.title %></h2>
+                  <h2 class="h3 section-title"><%- message.title %></h2>
                   <p class="message-sign">by <%= message.user.name %></p>
-                  <p class="section-text"><%= message.message %></p>
+                  <p class="section-text"><%- message.message %></p>
                   <p class="message-sign" id="date_posted"><%= message.date_posted %></p>
 
                   <!--IF USER IS AN ADMIN, SHOW DELETE BUTTON-->
